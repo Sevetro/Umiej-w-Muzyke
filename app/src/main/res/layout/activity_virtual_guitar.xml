@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VirtualGuitarActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string5fret0E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string5fret1F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string5fret2Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string5fret3G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string5fret4Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string5fret5A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string5fret6Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string5fret7B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string5fret8C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string5fret9Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string5fret10D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string5fret11Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string5fret12E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string4fret0A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string4fret1Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string4fret2B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string4fret3C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string4fret4Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string4fret5D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string4fret6Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string4fret7E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string4fret8F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string4fret9Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string4fret10G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string4fret11Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string4fret12A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string3fret0D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string3fret1Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string3fret2E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string3fret3F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string3fret4Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string3fret5G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string3fret6Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string3fret7A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string3fret8Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string3fret9B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string3fret10C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string3fret11Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string3fret12D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+        </LinearLayout>
+
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string2fret0G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string2fret1Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string2fret2A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string2fret3Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string2fret4B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string2fret5C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string2fret6Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string2fre7D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string2fret8Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string2fret9E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string2fret10F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string2fret11Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string2fret12G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string1fret0B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string1fret1C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string1fret2Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string1fre3D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string1fret4Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string1fret5E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string1fret6F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string1fret7Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string1fret8G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string1fret9Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string1fret10A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string1fret11Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string1fret12B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/string0fret0E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+
+            <TextView
+                android:id="@+id/string0fret1F"
+                style="@style/virtualGuitarNote"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/string0fret2Fis"
+                style="@style/virtualGuitarNote"
+                android:text="F#" />
+
+            <TextView
+                android:id="@+id/string0fret3G"
+                style="@style/virtualGuitarNote"
+                android:text="G" />
+
+            <TextView
+                android:id="@+id/string0fret4Gis"
+                style="@style/virtualGuitarNote"
+                android:text="G#" />
+
+            <TextView
+                android:id="@+id/string0fret5A"
+                style="@style/virtualGuitarNote"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/string0fret6Ais"
+                style="@style/virtualGuitarNote"
+                android:text="A#" />
+
+            <TextView
+                android:id="@+id/string0fret7B"
+                style="@style/virtualGuitarNote"
+                android:text="B" />
+
+            <TextView
+                android:id="@+id/string0fret8C"
+                style="@style/virtualGuitarNote"
+                android:text="C" />
+
+            <TextView
+                android:id="@+id/string0fret9Cis"
+                style="@style/virtualGuitarNote"
+                android:text="C#" />
+
+            <TextView
+                android:id="@+id/string0fret10D"
+                style="@style/virtualGuitarNote"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/string0fret11Dis"
+                style="@style/virtualGuitarNote"
+                android:text="D#" />
+
+            <TextView
+                android:id="@+id/string0fret12E"
+                style="@style/virtualGuitarNote"
+                android:text="E" />
+        </LinearLayout>
+        
+        
+        
+        
+    </LinearLayout>
+</ScrollView>
