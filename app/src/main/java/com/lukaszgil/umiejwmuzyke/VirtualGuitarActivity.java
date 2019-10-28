@@ -18,11 +18,6 @@ public class VirtualGuitarActivity extends AppCompatActivity {
 
 
     private SoundPool soundPool;
-    private int E0, F1, Fis2, G3, Gis4, A5, Ais6, B7, C8, Cis9, D10, Dis11;
-    private int E12, F13, Fis14, G15, Gis16, A17, Ais18, B19, C20, Cis21, D22, Dis23;
-    private int E24, F25, Fis26, G27, Gis28, A29, Ais30, B31, C32, Cis33, D34, Dis35, E36;
-
-
     private int[][] guitarStringFret = new int[6][13];
 
 
@@ -51,47 +46,8 @@ public class VirtualGuitarActivity extends AppCompatActivity {
         }
 
 
-//        E0 = soundPool.load(this, R.raw.n0e, 1);
-//        F1 = soundPool.load(this, R.raw.n1f, 1);
-//        Fis2 = soundPool.load(this, R.raw.n2fis, 1);
-//        G3 = soundPool.load(this, R.raw.n3g, 1);
-//        Gis4 = soundPool.load(this, R.raw.n4gis, 1);
-//        A5 = soundPool.load(this, R.raw.n5a, 1);
-//        Ais6 = soundPool.load(this, R.raw.n6ais, 1);
-//        B7 = soundPool.load(this, R.raw.n7b, 1);
-//        C8 = soundPool.load(this, R.raw.n8c, 1);
-//        Cis9 = soundPool.load(this, R.raw.n9cis, 1);
-//        D10 = soundPool.load(this, R.raw.n10d, 1);
-//        Dis11 = soundPool.load(this, R.raw.n11dis, 1);
-//
-//        E12 = soundPool.load(this, R.raw.n12e, 1);
-//        F13 = soundPool.load(this, R.raw.n13f, 1);
-//        Fis14 = soundPool.load(this, R.raw.n14fis, 1);
-//        G15 = soundPool.load(this, R.raw.n15g, 1);
-//        Gis16 = soundPool.load(this, R.raw.n16gis, 1);
-//        A17 = soundPool.load(this, R.raw.n17a, 1);
-//        Ais18 = soundPool.load(this, R.raw.n18ais, 1);
-//        B19 = soundPool.load(this, R.raw.n19b, 1);
-//        C20 = soundPool.load(this, R.raw.n20c, 1);
-//        Cis21 = soundPool.load(this, R.raw.n21cis, 1);
-//        D22 = soundPool.load(this, R.raw.n22d, 1);
-//        Dis23 = soundPool.load(this, R.raw.n23dis, 1);
-//
-//        E24 = soundPool.load(this, R.raw.n24e, 1);
-//        F25 = soundPool.load(this, R.raw.n25f, 1);
-//        Fis26 = soundPool.load(this, R.raw.n26fis, 1);
-//        G27 = soundPool.load(this, R.raw.n27g, 1);
-//        Gis28 = soundPool.load(this, R.raw.n28gis, 1);
-//        A29 = soundPool.load(this, R.raw.n29a, 1);
-//        Ais30 = soundPool.load(this, R.raw.n30ais, 1);
-//        B31 = soundPool.load(this, R.raw.n31b, 1);
-//        C32 = soundPool.load(this, R.raw.n32c, 1);
-//        Cis33 = soundPool.load(this, R.raw.n33cis, 1);
-//        D34 = soundPool.load(this, R.raw.n34d, 1);
-//        Dis35 = soundPool.load(this, R.raw.n35dis, 1);
-//        E36 = soundPool.load(this, R.raw.n36e, 1);
 
-
+        //loading notes to soundpool
         for (int j = 5; j >= 0; j--) {
             int[] odstepStrun = {0, 5, 10, 15, 19, 24};
             for (int i = 0; i < 13; i++) {

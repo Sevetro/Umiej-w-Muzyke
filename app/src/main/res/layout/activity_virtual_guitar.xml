@@ -15,7 +15,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string5">
+
             <TextView
                 android:id="@+id/string5fret0E"
                 style="@style/virtualGuitarNote"
@@ -86,7 +88,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string4">
             <TextView
                 android:id="@+id/string4fret0A"
                 style="@style/virtualGuitarNote"
@@ -157,7 +160,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string3">
             <TextView
                 android:id="@+id/string3fret0D"
                 style="@style/virtualGuitarNote"
@@ -228,7 +232,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string2">
             <TextView
                 android:id="@+id/string2fret0G"
                 style="@style/virtualGuitarNote"
@@ -298,7 +303,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string1">
             <TextView
                 android:id="@+id/string1fret0B"
                 style="@style/virtualGuitarNote"
@@ -368,7 +374,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/virtual_guitar_string0">
             <TextView
                 android:id="@+id/string0fret0E"
                 style="@style/virtualGuitarNote"
