@@ -2,16 +2,12 @@ package com.lukaszgil.umiejwmuzyke;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class VirtualGuitarActivity extends AppCompatActivity {
@@ -46,8 +42,16 @@ public class VirtualGuitarActivity extends AppCompatActivity {
         }
 
 
+        loadNotes();
 
-        //loading notes to soundpool
+
+    }
+
+
+
+
+    public void loadNotes() {
+
         for (int j = 5; j >= 0; j--) {
             int[] odstepStrun = {0, 5, 10, 15, 19, 24};
             for (int i = 0; i < 13; i++) {
@@ -56,8 +60,10 @@ public class VirtualGuitarActivity extends AppCompatActivity {
             }
         }
 
-
     }
+
+
+
 
     public void playNote(View view) {
         switch (view.getId()) {

@@ -12,7 +12,9 @@
 
     <item>
         <shape android:shape="oval">
-            <solid android:color="#f0c0a0"/>
+            <solid android:color="#e0b090"/>
+            <gradient android:angle="90"
+                android:centerColor="#505050"/>
         </shape>
     </item>
 </layer-list>

@@ -11,16 +11,64 @@
 
 
     <style name="virtualGuitarNote">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
-        <item name="android:width">60dp</item>
-        <item name="android:height">60dp</item>
         <item name="android:onClick">playNote</item>
         <item name="android:background">@drawable/virtual_guitar_note</item>
         <item name="android:gravity">center</item>
         <item name="android:rotation">90</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
+
+
+    <style name="chordBookRootNote">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#282830</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#ddffee</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:onClick">rootNoteClick</item>
+    </style>
+
+    <style name="chordBookChordType">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#282830</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#ddffee</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:onClick">chordTypeClick</item>
+    </style>
+
+    <style name="chordBookFretNumber">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ddeeff</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <style name="chordBookMuteOpenString">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ddeeff</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+    </style>
+
+
+    <style name="chordBookString">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">50dp</item>
+    </style>
+
 
 </resources>
