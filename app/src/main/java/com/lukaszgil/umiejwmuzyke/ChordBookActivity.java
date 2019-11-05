@@ -21,16 +21,15 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.sql.Array;
 import java.sql.Time;
 import java.util.Arrays;
 import java.util.Timer;
 
 public class ChordBookActivity extends AppCompatActivity {
 
-    private String[] selectedChordNotes, rootNotes = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#"};
-    private String selectedRootNote, selectedChordType;
-    private int selectedRootNoteIndex;
-    private View lastRootNoteView, lastChordTypeView;
+    private String[] rootNotes = {"C", "C#", "D", "D#", "E", "F", "F#", "G",
+            "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#"};
     private String[][] guitarFretNotes = {
             {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G"},
             {"B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D"},
@@ -40,38 +39,67 @@ public class ChordBookActivity extends AppCompatActivity {
             {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G"}};
 
 
-    LinearLayout.LayoutParams chordBookLinearLayoutMuteOpenParams, chordBookTextViewMuteOpenParams, chordBookLinearLayoutFretNumbersParams, chordBookTextViewFretNumbersParams,
-            chordBookLinearLayoutNotesDotsParams, chordBookImageViewNotesDotsParams;
-    RelativeLayout.LayoutParams chordBookRelativeLayoutParams, chordBookImageViewNeckParams, chordBookImageViewStringsParams;
-    RelativeLayout chordBookRelativeLayout;
-    LinearLayout chordBookLinearLayoutAllChords, chordBookLinearLayoutMuteOpen, chordBookLinearLayoutFretNumbers;
-    LinearLayout[] chordBookLinearLayoutNotesDots = new LinearLayout[4];
-    ImageView chordBookImageViewNeck;
-    ImageView[] chordBookImageViewStrings = new ImageView[6];
-    TextView[] chordBookTextViewMuteOpen = new TextView[6], chordBookTextViewFretNumbers = new TextView[4];
-    ImageView[][] chordBookImageViewNotesDots = new ImageView[4][6];
+    LinearLayout chordBookLinearLayoutAllChords;
     float dens;
 
 
+    // rootNoteClick(View view)
+    private String selectedRootNote;
+    private View lastRootNoteView;
+
+    // chordTypeClick(View view)
+    private String selectedChordType;
+    private View lastChordTypeView;
+
+    //  composeChord()
+    int selectedRootNoteIndex;
+    private String[] selectedChordNotes;
+
+    // loadRelativeLayoutChordArray()
+    RelativeLayout.LayoutParams chordBookRelativeLayoutChordArrayParams;
+    private RelativeLayout[] chordBookRelativeLayoutChordArray;
+
+    // loadImageViewNeck()
+    RelativeLayout.LayoutParams chordBookImageViewNeckParams;
+    ImageView chordBookImageViewNeck;
+
+    // loadStringImages()
+    RelativeLayout.LayoutParams chordBookImageViewStringsParams;
+    private ImageView[] chordBookImageViewStrings = new ImageView[6];
+
+    // loadNotesDots()
+    LinearLayout.LayoutParams chordBookLinearLayoutNotesDotsParams, chordBookImageViewNotesDotsParams;
+    private LinearLayout[] chordBookLinearLayoutNotesDots = new LinearLayout[4];
+    ImageView[][] chordBookImageViewNotesDots = new ImageView[4][6];
+
+    // loadFretNumbers()
+    LinearLayout.LayoutParams chordBookLinearLayoutFretNumbersParams, chordBookTextViewFretNumbersParams;
+    LinearLayout chordBookLinearLayoutFretNumbers;
+    TextView[] chordBookTextViewFretNumbers = new TextView[4];
+
+    // loadOpenMuteStrings()
+    LinearLayout.LayoutParams chordBookLinearLayoutMuteOpenParams, chordBookTextViewMuteOpenParams;
+    LinearLayout chordBookLinearLayoutMuteOpen;
+    TextView[] chordBookTextViewMuteOpen = new TextView[6];
+
+    // chooseVisibleDots()
     private int chordFirstFret = 0, chordLastFret = 12;
     boolean enableFirstAndLastFret = true;
     boolean[] enableStrings = {true, true, true, true, true, true};
+    int chordNumber = 4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chord_book);
-
         dens = this.getResources().getDisplayMetrics().density;
         chordBookLinearLayoutAllChords = findViewById(R.id.chordBookLinearLayoutAllChords);
 
+
         loadFirstChord();
-        loadChordBackground();
+        CreateChords();
 
-        loadNotesDots();
-
-        loadFretNumberAndOpenMuteStrings();
-        makeVisibleDots();
 
 
     }
@@ -93,7 +121,6 @@ public class ChordBookActivity extends AppCompatActivity {
     }
 
     private void composeChord() {
-
         switch (selectedChordType) {
             case "major":
                 selectedChordNotes = new String[3];
@@ -140,15 +167,11 @@ public class ChordBookActivity extends AppCompatActivity {
                 selectedChordNotes[3] = rootNotes[selectedRootNoteIndex + 10];
                 break;
         }
-
-
         String selectedChordNotesCombined = "";
         for (String note : selectedChordNotes) {
             selectedChordNotesCombined += note;
         }
-        Toast.makeText(this, selectedChordNotesCombined, Toast.LENGTH_SHORT).show();
-
-
+        //Toast.makeText(this, selectedChordNotesCombined, Toast.LENGTH_SHORT).show();
     }
 
     public void loadFirstChord() {
@@ -161,28 +184,30 @@ public class ChordBookActivity extends AppCompatActivity {
         composeChord();
     }
 
-    public void loadChordBackground() {
+    public void createRelativeLayoutChordArray(int i) {
+        chordBookRelativeLayoutChordArrayParams = new RelativeLayout.LayoutParams((int) (250 * dens), (int) (350 * dens));
+        chordBookRelativeLayoutChordArrayParams.setMarginStart((int) (50 * dens));
+        chordBookRelativeLayoutChordArrayParams.setMarginEnd((int) (50 * dens));
+        chordBookRelativeLayoutChordArray = new RelativeLayout[chordNumber];
+        chordBookRelativeLayoutChordArray[i] = new RelativeLayout(this);
+        chordBookRelativeLayoutChordArray[i].setLayoutParams(chordBookRelativeLayoutChordArrayParams);
+        chordBookLinearLayoutAllChords.addView(chordBookRelativeLayoutChordArray[i]);
+    }
 
-        chordBookRelativeLayoutParams = new RelativeLayout.LayoutParams((int) (250 * dens), (int) (350 * dens));
-        chordBookRelativeLayoutParams.setMarginStart((int) (50 * dens));
-        chordBookRelativeLayoutParams.setMarginEnd((int) (50 * dens));
-        chordBookRelativeLayout = new RelativeLayout(this);
-        chordBookRelativeLayout.setLayoutParams(chordBookRelativeLayoutParams);
-
-        //NECK IMAGE###################################
-
-        chordBookImageViewNeck = new ImageView(this);
+    public void loadImageViewNeck(int i) {
         chordBookImageViewNeckParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         chordBookImageViewNeckParams.setMarginStart((int) (20 * dens));
         chordBookImageViewNeckParams.setMarginEnd((int) (20 * dens));
+        chordBookImageViewNeck = new ImageView(this);
         chordBookImageViewNeck.setLayoutParams(chordBookImageViewNeckParams);
         chordBookImageViewNeck.setImageResource(R.drawable.chord_book_neck);
-        chordBookRelativeLayout.addView(chordBookImageViewNeck);
+        chordBookRelativeLayoutChordArray[i].addView(chordBookImageViewNeck);
 
-        //STRINGS IMAGES##########################################
+    }
 
+    public void loadStringImages(int j) {
         for (int i = 0; i < 6; i++) {
-            chordBookImageViewStrings[i] = new ImageView(this);
+//            chordBookImageViewStrings[i] = new ImageView(this);
             chordBookImageViewStringsParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             chordBookImageViewStringsParams.setMargins(0, (int) (30 * dens), 0, (int) (50 * dens));
             switch (i) {
@@ -205,19 +230,18 @@ public class ChordBookActivity extends AppCompatActivity {
                     chordBookImageViewStringsParams.setMarginStart((int) (208 * dens));
                     break;
             }
+            chordBookImageViewStrings[i] = new ImageView(this);
             chordBookImageViewStrings[i].setLayoutParams(chordBookImageViewStringsParams);
             chordBookImageViewStrings[i].setImageResource(getResources().getIdentifier(
                     "virtual_guitar_string" + i, "drawable", this.getPackageName()));
-            chordBookRelativeLayout.addView(chordBookImageViewStrings[i]);
+            chordBookRelativeLayoutChordArray[j].addView(chordBookImageViewStrings[i]);
         }
-
-        chordBookLinearLayoutAllChords.addView(chordBookRelativeLayout);
-
-
     }
 
-    public void loadNotesDots() {
+    public void loadNotesDots(int i) {
         chordBookLinearLayoutNotesDotsParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        chordBookImageViewNotesDotsParams = new LinearLayout.LayoutParams((int) (30 * dens), (int) (30 * dens));
+        chordBookImageViewNotesDotsParams.setMarginStart((int) (4.5 * dens));
         for (int fret = 0; fret < 4; fret++) {
             switch (fret) {
                 case 0:
@@ -236,15 +260,18 @@ public class ChordBookActivity extends AppCompatActivity {
             chordBookLinearLayoutNotesDots[fret] = new LinearLayout(this);
             chordBookLinearLayoutNotesDots[fret].setLayoutParams(chordBookLinearLayoutNotesDotsParams);
             chordBookLinearLayoutNotesDots[fret].setGravity(Gravity.CENTER_HORIZONTAL);
-            chordBookRelativeLayout.addView(chordBookLinearLayoutNotesDots[fret]);
 
-            chordBookImageViewNotesDotsParams = new LinearLayout.LayoutParams((int) (30 * dens), (int) (30 * dens));
-            chordBookImageViewNotesDotsParams.setMarginStart((int) (4.5 * dens));
+            chordBookRelativeLayoutChordArray[i].addView(chordBookLinearLayoutNotesDots[fret]);
+
+
+//            chordBookImageViewNotesDotsParams = new LinearLayout.LayoutParams((int) (30 * dens), (int) (30 * dens));
+//            chordBookImageViewNotesDotsParams.setMarginStart((int) (4.5 * dens));
             for (int string = 5; string >= 0; string--) {
                 chordBookImageViewNotesDots[fret][string] = new ImageView(this);
                 chordBookImageViewNotesDots[fret][string].setLayoutParams(chordBookImageViewNotesDotsParams);
                 chordBookImageViewNotesDots[fret][string].setImageResource(R.drawable.chord_book_note_dot);
                 chordBookImageViewNotesDots[fret][string].setVisibility(View.INVISIBLE);
+
                 chordBookLinearLayoutNotesDots[fret].addView(chordBookImageViewNotesDots[fret][string]);
             }
         }
@@ -252,29 +279,7 @@ public class ChordBookActivity extends AppCompatActivity {
 
     }
 
-    public void loadFretNumberAndOpenMuteStrings() {
-
-        // OPEN MUTE@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-        chordBookLinearLayoutMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        chordBookLinearLayoutMuteOpen = new LinearLayout(this);
-        chordBookLinearLayoutMuteOpen.setLayoutParams(chordBookLinearLayoutMuteOpenParams);
-        chordBookLinearLayoutMuteOpen.setGravity(Gravity.CENTER_HORIZONTAL);
-        for (int i = 5; i >= 0; i--) {
-            chordBookTextViewMuteOpen[i] = new TextView(this);
-            chordBookTextViewMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            chordBookTextViewMuteOpenParams.setMarginStart((int) (12 * dens));
-            chordBookTextViewMuteOpenParams.setMarginEnd((int) (12 * dens));
-            chordBookTextViewMuteOpen[i].setLayoutParams(chordBookTextViewMuteOpenParams);
-            chordBookTextViewMuteOpen[i].setTextSize(20);
-            chordBookTextViewMuteOpen[i].setTextColor(Color.parseColor("#ddeeff"));
-            chordBookTextViewMuteOpen[i].setText(String.valueOf(i));
-            chordBookLinearLayoutMuteOpen.addView(chordBookTextViewMuteOpen[i]);
-        }
-        chordBookRelativeLayout.addView(chordBookLinearLayoutMuteOpen);
-
-        //FRET NUMBERS#####################################
-
+    public void loadFretNumbers(int j) {
         chordBookLinearLayoutFretNumbersParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         chordBookLinearLayoutFretNumbers = new LinearLayout(this);
         chordBookLinearLayoutFretNumbers.setOrientation(LinearLayout.VERTICAL);
@@ -282,63 +287,87 @@ public class ChordBookActivity extends AppCompatActivity {
         chordBookLinearLayoutFretNumbers.setLayoutParams(chordBookLinearLayoutFretNumbersParams);
 
         for (int i = 0; i < 4; i++) {
-            chordBookTextViewFretNumbers[i] = new TextView(this);
             chordBookTextViewFretNumbersParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             chordBookTextViewFretNumbersParams.setMargins(0, (int) (20 * dens), 0, (int) (20 * dens));
+            chordBookTextViewFretNumbers[i] = new TextView(this);
             chordBookTextViewFretNumbers[i].setLayoutParams(chordBookTextViewFretNumbersParams);
             chordBookTextViewFretNumbers[i].setTextSize(20);
             chordBookTextViewFretNumbers[i].setTextColor(Color.parseColor("#ddeeff"));
             chordBookTextViewFretNumbers[i].setText(String.valueOf(i + 1 + chordFirstFret));
             chordBookLinearLayoutFretNumbers.addView(chordBookTextViewFretNumbers[i]);
         }
-        chordBookRelativeLayout.addView(chordBookLinearLayoutFretNumbers);
-
-
+        chordBookRelativeLayoutChordArray[j].addView(chordBookLinearLayoutFretNumbers);
     }
 
-    public void makeVisibleDots() {
-        fretloop:
+    public void loadOpenMuteStrings(int j) {
+        chordBookLinearLayoutMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        chordBookLinearLayoutMuteOpen = new LinearLayout(this);
+        chordBookLinearLayoutMuteOpen.setLayoutParams(chordBookLinearLayoutMuteOpenParams);
+        chordBookLinearLayoutMuteOpen.setGravity(Gravity.CENTER_HORIZONTAL);
+        for (int i = 5; i >= 0; i--) {
+            chordBookTextViewMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            chordBookTextViewMuteOpenParams.setMarginStart((int) (12 * dens));
+            chordBookTextViewMuteOpenParams.setMarginEnd((int) (12 * dens));
+            chordBookTextViewMuteOpen[i] = new TextView(this);
+            chordBookTextViewMuteOpen[i].setLayoutParams(chordBookTextViewMuteOpenParams);
+            chordBookTextViewMuteOpen[i].setTextSize(20);
+            chordBookTextViewMuteOpen[i].setTextColor(Color.parseColor("#ddeeff"));
+            chordBookTextViewMuteOpen[i].setText(String.valueOf(i));
+            chordBookLinearLayoutMuteOpen.addView(chordBookTextViewMuteOpen[i]);
+        }
+        chordBookRelativeLayoutChordArray[j].addView(chordBookLinearLayoutMuteOpen);
+    }
+
+    public void chooseVisibleDots() {
+
         for (int fret = chordFirstFret; fret <= chordLastFret; fret++) {
-            stringloop:
             for (int string = 5; string >= 0; string--) {
-
                 for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
-
-
                     if (guitarFretNotes[string][fret].equals(selectedChordNotes[noteIndex])) {
-
-
-                            if (enableFirstAndLastFret) {
-                                chordFirstFret = fret;
-                                chordLastFret = fret + 3;
-                                enableFirstAndLastFret = !enableFirstAndLastFret;
-                            }
-
-
+                        if (enableFirstAndLastFret) {
+                            chordFirstFret = fret;
+                            chordLastFret = fret + 3;
+                            enableFirstAndLastFret = !enableFirstAndLastFret;
+                        }
+                        if (fret == 0) {
+                            chordBookTextViewMuteOpen[string].setText("o");
+                            enableStrings[string] = !enableStrings[string];
+                        }
+                        if (chordFirstFret == 0) {
                             if (enableStrings[string]) {
-                                if (fret != 0) {
-                                    chordBookImageViewNotesDots[fret][string].setVisibility(View.VISIBLE);
-                                }else {
-                                    chordBookTextViewMuteOpen[string].setText("o");
-                                }
-
-
+                                chordBookImageViewNotesDots[fret - 1][string].setVisibility(View.VISIBLE);
                                 enableStrings[string] = !enableStrings[string];
                             }
-
-
-                            //Toast.makeText(this, guitarFretNotes[string][fret] + string + fret, Toast.LENGTH_SHORT).show();
+                        } else if (enableStrings[string]) {
+                            chordBookImageViewNotesDots[fret][string].setVisibility(View.VISIBLE);
+                            enableStrings[string] = !enableStrings[string];
                         }
-
-
-                        }
-
                     }
-
-
                 }
             }
 
+//            if (!enableStrings[0] && !enableStrings[1] && !enableStrings[2] && !enableStrings[3] && !enableStrings[4] && !enableStrings[5]) {
+//                chordNumber++;
+//                chordFirstFret = +1;
+//                chordLastFret = 12;
+
+        }
+
+    }
+
+    public void CreateChords() {
+        for (int counter = 0; counter < chordNumber; counter++) {
+            createRelativeLayoutChordArray(counter);
+            loadImageViewNeck(counter);
+            loadStringImages(counter);
+            loadNotesDots(counter);
+            loadFretNumbers(counter);
+            loadOpenMuteStrings(counter);
+            //chooseVisibleDots();
+        }
+    }
 
 
 }
+
+
