@@ -87,6 +87,9 @@ public class ChordBookActivity extends AppCompatActivity {
     // howManyChords()
     int chordNumber;
 
+    //OGARNIJ C#MOL 7, PRIORYTETY NA DZWIEKI
+    //DOPIERO JAK ZNAJDZIE WSZYSTKIE DZWIEKI AKORDOWE POWINIEN RYSOWAC AKORD
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,13 +208,12 @@ public class ChordBookActivity extends AppCompatActivity {
                             if (guitarFretNotes[string][fret].equals(selectedChordNotes[noteIndex])) {
 
                                 if (enableFirstAndLastFret) {
-
+                                    chordFirstFret = fret;
                                     chordLastFret = fret + 3;  //3
                                     enableFirstAndLastFret = false;
                                 }
 
                                 enableStrings[string] = false;
-                                //if every string false
                                 foundNotes[noteIndex] = true;
                                 //Toast.makeText(this, guitarFretNotes[string][fret] + string + fret, Toast.LENGTH_SHORT).show();
                                 break;
@@ -399,8 +401,8 @@ public class ChordBookActivity extends AppCompatActivity {
         chordBookLinearLayoutMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         chordBookLinearLayoutMuteOpen = new LinearLayout[chordNumber];
         chordBookTextViewMuteOpenParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        chordBookTextViewMuteOpenParams.setMarginStart((int) (12 * dens));
-        chordBookTextViewMuteOpenParams.setMarginEnd((int) (12 * dens));
+        chordBookTextViewMuteOpenParams.setMarginStart((int) (13 * dens));
+        chordBookTextViewMuteOpenParams.setMarginEnd((int) (13 * dens));
         chordBookTextViewMuteOpen = new TextView[chordNumber][6];
 
         for (int j = 0; j < chordNumber; j++) {
@@ -413,7 +415,7 @@ public class ChordBookActivity extends AppCompatActivity {
                 chordBookTextViewMuteOpen[j][i].setLayoutParams(chordBookTextViewMuteOpenParams);
                 chordBookTextViewMuteOpen[j][i].setTextSize(20);
                 chordBookTextViewMuteOpen[j][i].setTextColor(Color.parseColor("#ddeeff"));
-                chordBookTextViewMuteOpen[j][i].setText(String.valueOf(i));
+                chordBookTextViewMuteOpen[j][i].setText(" ");
                 chordBookLinearLayoutMuteOpen[j].addView(chordBookTextViewMuteOpen[j][i]);
             }
             chordBookRelativeLayoutChordArray[j].addView(chordBookLinearLayoutMuteOpen[j]);
@@ -424,131 +426,83 @@ public class ChordBookActivity extends AppCompatActivity {
 
     public void chooseDotsFretsMutes() {
 
-
         int chordFirstFret = 0;
         int chordLastFret = 12;
         boolean enableFirstAndLastFret = true;
         boolean[] enableStrings = {true, true, true, true, true, true};
-        boolean[] foundNotes = new boolean[selectedChordNotes.length];
-        int foundNotesNumber = 0;
 
-        for (int i = 0; i < chordNumber; i++) {
+        for (int chord = 0; chord < chordNumber; chord++) {
+
             while (chordFirstFret < 12) {
 
                 for (int fret = chordFirstFret; fret <= chordLastFret; fret++) {
 
                     for (int string = 0; string < 6; string++) {
-                        if (enableStrings[string]) {
-                            for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
 
+                        if (enableStrings[string]) {
+
+                            for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
 
                                 if (guitarFretNotes[string][fret].equals(selectedChordNotes[noteIndex])) {
 
                                     if (enableFirstAndLastFret) {
-
+                                        chordFirstFret = fret;
                                         chordLastFret = fret + 3;  //3
+                                        if (chordFirstFret != 0) {
+                                            for (int i = 0; i <= 3; i++) {
+                                                chordBookTextViewFretNumbers[chord][i].setText(String.valueOf(i + chordFirstFret));
+                                            }
+                                        }
                                         enableFirstAndLastFret = false;
                                     }
 
                                     enableStrings[string] = false;
-                                    foundNotes[noteIndex] = true;
-
 
                                     if (fret == 0) {
-                                        chordBookTextViewMuteOpen[i][string].setText("o");
+                                        chordBookTextViewMuteOpen[chord][string].setText("o");
+                                        break;
                                     }
 
 
                                     if (chordFirstFret == 0) {
-                                        if (fret > 0){
-                                            chordBookImageViewNotesDots[i][fret - 1][string].setVisibility(View.VISIBLE);
+                                        if (fret > 0) {
+                                            chordBookImageViewNotesDots[chord][fret - 1][string].setVisibility(View.VISIBLE);
+                                            break;
+                                        }
+                                    } else {
+                                        chordBookImageViewNotesDots[chord][fret - chordFirstFret][string].setVisibility(View.VISIBLE);
+                                        break;
                                     }
-                                }
 
+                                } //ifequals
 
+                            } //noteindexloop
 
+                        } //ifenablestring
 
-                                break;
-                            } //ifequals
+                    } //stringloop
 
-                        } //noteindexloop
+                } //fretloop
+                chordFirstFret++;
 
-                    } //ifenablestring
+                for (int i = 0; i < 6; i++) {
+                    if (enableStrings[i]) {
+                        chordBookTextViewMuteOpen[chord][i].setText("x");
+                    }
+                }
 
-                } //stringloop
+                enableFirstAndLastFret = true;
+                chordLastFret = 12;
+                for (int b = 0; b < 6; b++) {
+                    enableStrings[b] = true;
+                }
+                break;
 
-            } //fretloop
+            } //whileFirstfretloop
 
+        } //forchordloop
 
-            chordFirstFret++;
-            for (int b = 0; b < 6; b++) {
-                enableStrings[b] = true;
-            }
-
-
-        } //whileloop
-
-
-    } //forchordnumberloop
-
-
-
-//        for (int fret = chordFirstFret; fret <= chordLastFret; fret++) {
-//
-//            if (chordFirstFret != 0)
-//                chordBookTextViewFretNumbers[i][fret - chordFirstFret].setText(String.valueOf(fret));
-//            else
-//                chordBookTextViewFretNumbers[i][fret - chordFirstFret].setText(String.valueOf(fret + 1));
-//
-//            for (int string = 5; string >= 0; string--) {
-//
-//                for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
-//
-//                    if (guitarFretNotes[string][fret].equals(selectedChordNotes[noteIndex])) {
-//
-//                        if (enableFirstAndLastFret) {
-//                            chordFirstFret = fret;
-//                            chordLastFret = fret + 3;
-//                            enableFirstAndLastFret = false;
-//                        }
-//                        if (fret == 0) {
-//                            chordBookTextViewMuteOpen[i][string].setText("o");
-//                            enableStrings[string] = false;
-//                            break;
-//                        }
-//                        if (chordFirstFret == 0) {
-//                            if (enableStrings[string]) {
-//                                chordBookImageViewNotesDots[i][fret - 1][string].setVisibility(View.VISIBLE);
-//                                enableStrings[string] = false;
-//                                break;
-//                            }
-//                        }
-//                        if (enableStrings[string]) {
-//                            chordBookImageViewNotesDots[i][fret - chordFirstFret][string].setVisibility(View.VISIBLE);
-//                            enableStrings[string] = false;
-//                            break;
-//                        }
-//                    }
-//                } //noteindexloop
-//            } //stringloop
-//
-//            if (!enableStrings[0] && !enableStrings[1] && !enableStrings[2] && !enableStrings[3] && !enableStrings[4] && !enableStrings[5]) {
-//                chordNumber++;
-//                chordFirstFret++;
-//                chordLastFret = 12;
-//                enableStrings[0] = true;
-//                enableStrings[1] = true;
-//                enableStrings[2] = true;
-//                enableStrings[3] = true;
-//                enableStrings[4] = true;
-//                enableStrings[5] = true;
-//                enableFirstAndLastFret = true;
-//                break;
-//            }
-//        } //fretloop
-
-
-}
+    }
 
 
 }
