@@ -51,11 +51,11 @@ public class VirtualGuitarActivity extends AppCompatActivity {
 
 
     public void loadNotes() {
-
+        int[] odstepStrun = {0, 5, 10, 15, 19, 24};
         for (int j = 5; j >= 0; j--) {
-            int[] odstepStrun = {0, 5, 10, 15, 19, 24};
             for (int i = 0; i < 13; i++) {
-                guitarStringFret[j][i] = soundPool.load(this, getResources().getIdentifier("n" + (i + odstepStrun[5 - j]), "raw",
+                guitarStringFret[j][i] = soundPool.load(this,
+                        getResources().getIdentifier("n" + (i + odstepStrun[5 - j]), "raw",
                         getApplicationContext().getPackageName()), 1);
             }
         }

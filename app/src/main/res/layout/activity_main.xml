@@ -5,43 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/main_activity_background">
 
 
     <TextView
-        android:background="#9933aa"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:height="100dp"
+        android:height="85dp"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="Siemanko, witam w mojej apce, kliknij se coś."
+        android:text="Umiej w Muzyke"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold"
+        android:textStyle="italic"
         />
-
-
-
 
     <Button
         android:id="@+id/chordBookActivityBtn"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="225dp"
         android:text="Księga akordów"
-        android:background="#8833aa"
-        android:textSize="30sp"
-        android:textAllCaps="false"/>
+        android:background="@drawable/main_activity_button"
+        android:textSize="40sp"
+        android:textAllCaps="false"
+        />
 
 
     <Button
         android:id="@+id/virtualGuitarActivityBtn"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="225dp"
         android:text="Wirtualna gitara"
-        android:background="#7733aa"
-        android:textSize="30sp"
+        android:background="@drawable/main_activity_button"
+        android:textSize="40sp"
         android:textAllCaps="false"/>
 
 

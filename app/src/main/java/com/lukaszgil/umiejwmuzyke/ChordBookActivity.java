@@ -177,11 +177,13 @@ public class ChordBookActivity extends AppCompatActivity {
                 selectedChordNotes[3] = rootNotes[selectedRootNoteIndex + 10];
                 break;
         }
-        String selectedChordNotesCombined = "";
-        for (String note : selectedChordNotes) {
-            selectedChordNotesCombined += note;
-        }
-        // Toast.makeText(this, selectedChordNotesCombined, Toast.LENGTH_SHORT).show();
+
+
+//        String selectedChordNotesCombined = "";
+//        for (String note : selectedChordNotes) {
+//            selectedChordNotesCombined += note;
+//        }
+//         Toast.makeText(this, selectedChordNotesCombined, Toast.LENGTH_SHORT).show();
 
         howManyChords();
     }
@@ -201,9 +203,10 @@ public class ChordBookActivity extends AppCompatActivity {
             for (int fret = chordFirstFret; fret <= chordLastFret; fret++) {
 
                 for (int string = 0; string < 6; string++) {
-                    if (enableStrings[string]) {
-                        for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
 
+                    if (enableStrings[string]) {
+
+                        for (int noteIndex = 0; noteIndex < selectedChordNotes.length; noteIndex++) {
 
                             if (guitarFretNotes[string][fret].equals(selectedChordNotes[noteIndex])) {
 
@@ -218,15 +221,10 @@ public class ChordBookActivity extends AppCompatActivity {
                                 //Toast.makeText(this, guitarFretNotes[string][fret] + string + fret, Toast.LENGTH_SHORT).show();
                                 break;
 
-
                             } //ifequals
-
                         } //noteindexloop
-
                     } //ifenablestring
-
                 } //stringloop
-
             } //fretloop
 
             for (boolean note : foundNotes) {
@@ -235,13 +233,9 @@ public class ChordBookActivity extends AppCompatActivity {
                 }
             }
             if (foundNotesNumber == selectedChordNotes.length) {
-
                 chordNumber++;
-                chordFirstFret++;
-
-            } else {
-                chordFirstFret++;
             }
+            chordFirstFret++;
 
             for (int b = 0; b < 6; b++) {
                 enableStrings[b] = true;
@@ -252,9 +246,6 @@ public class ChordBookActivity extends AppCompatActivity {
             }
             foundNotesNumber = 0;
             chordLastFret = 12;
-
-            //Toast.makeText(this, String.valueOf(chordNumber), Toast.LENGTH_SHORT).show();
-
 
         } //whileloop
 
@@ -425,7 +416,6 @@ public class ChordBookActivity extends AppCompatActivity {
     }
 
     public void chooseDotsFretsMutes() {
-
         int chordFirstFret = 0;
         int chordLastFret = 12;
         boolean enableFirstAndLastFret = true;
@@ -455,15 +445,11 @@ public class ChordBookActivity extends AppCompatActivity {
                                         }
                                         enableFirstAndLastFret = false;
                                     }
-
                                     enableStrings[string] = false;
-
                                     if (fret == 0) {
                                         chordBookTextViewMuteOpen[chord][string].setText("o");
                                         break;
                                     }
-
-
                                     if (chordFirstFret == 0) {
                                         if (fret > 0) {
                                             chordBookImageViewNotesDots[chord][fret - 1][string].setVisibility(View.VISIBLE);
@@ -474,15 +460,15 @@ public class ChordBookActivity extends AppCompatActivity {
                                         break;
                                     }
 
-                                } //ifequals
+                                } //if foundnote
 
-                            } //noteindexloop
+                            } //noteindex loop
 
-                        } //ifenablestring
+                        } //if enablestring
 
-                    } //stringloop
+                    } //string loop
 
-                } //fretloop
+                } //fret loop
                 chordFirstFret++;
 
                 for (int i = 0; i < 6; i++) {
@@ -490,7 +476,6 @@ public class ChordBookActivity extends AppCompatActivity {
                         chordBookTextViewMuteOpen[chord][i].setText("x");
                     }
                 }
-
                 enableFirstAndLastFret = true;
                 chordLastFret = 12;
                 for (int b = 0; b < 6; b++) {
@@ -503,7 +488,6 @@ public class ChordBookActivity extends AppCompatActivity {
         } //forchordloop
 
     }
-
 
 }
 

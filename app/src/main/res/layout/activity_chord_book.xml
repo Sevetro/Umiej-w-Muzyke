@@ -32,47 +32,36 @@
                     android:id="@+id/btnC"
                     style="@style/chordBookRootNote"
                     android:text="C" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="C#" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="D" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="D#" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="E" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="F" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="F#" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="G" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="G#" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="A" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="A#" />
-
                 <Button
                     style="@style/chordBookRootNote"
                     android:text="B" />
@@ -92,26 +81,22 @@
                     android:id="@+id/btnMajor"
                     style="@style/chordBookChordType"
                     android:text="major" />
-
                 <Button
                     style="@style/chordBookChordType"
                     android:text="minor" />
-
                 <Button
                     style="@style/chordBookChordType"
                     android:text="5" />
-
                 <Button
                     style="@style/chordBookChordType"
                     android:text="7" />
-
                 <Button
                     style="@style/chordBookChordType"
                     android:text="maj7" />
-
                 <Button
                     style="@style/chordBookChordType"
                     android:text="m7" />
+
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -124,272 +109,11 @@
                 android:id="@+id/chordBookLinearLayoutAllChords"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical">
-
-
-<!--                <RelativeLayout-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="350dp"-->
-<!--                    android:layout_marginStart="50dp"-->
-<!--                    android:layout_marginEnd="50dp">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="20dp"-->
-<!--                        android:layout_marginEnd="20dp"-->
-<!--                        android:src="@drawable/chord_book_neck" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="35dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string5" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="70dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string4" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="105dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string3" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="140dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string2" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="174dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string1" />-->
-
-<!--                    <ImageView-->
-<!--                        style="@style/chordBookString"-->
-<!--                        android:layout_marginStart="208dp"-->
-<!--                        android:src="@drawable/virtual_guitar_string0" />-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_horizontal">-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="x" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="o" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="x" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="x" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="x" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookMuteOpenString"-->
-<!--                            android:text="x" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookFretNumber"-->
-<!--                            android:text="1" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookFretNumber"-->
-<!--                            android:text="2" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookFretNumber"-->
-<!--                            android:text="3" />-->
-
-<!--                        <TextView-->
-<!--                            style="@style/chordBookFretNumber"-->
-<!--                            android:text="4" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="53dp"-->
-<!--                        android:layout_marginEnd="5dp"-->
-<!--                        android:gravity="center_horizontal">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="125dp"-->
-<!--                        android:layout_marginEnd="5dp"-->
-<!--                        android:gravity="center_horizontal">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="190dp"-->
-<!--                        android:layout_marginEnd="5dp"-->
-<!--                        android:gravity="center_horizontal">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="255dp"-->
-<!--                        android:layout_marginEnd="5dp"-->
-<!--                        android:gravity="center_horizontal">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_marginStart="4.3dp"-->
-<!--                            android:src="@drawable/chord_book_note_dot" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                </RelativeLayout>-->
-
-
-            </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"/>
 
         </HorizontalScrollView>
 
-
     </LinearLayout>
-
 
 </LinearLayout>
